@@ -1,0 +1,53 @@
+<div align="right">
+<button mdbBtn color="info"  (click)="reset()">Reset</button>
+</div>
+  
+
+<form class="text-center border border-light p-5" [formGroup]="Details" (ngSubmit)="submitvalue()">
+    <p class="h4 mb-4">Sign up</p>
+    <div class="form-row mb-4">
+      <div class="col">  
+          <div *ngIf = "firstname.invalid && (firstname.dirty || firstname.touched)">
+              <div *ngIf="firstname.errors.required">
+                  Name is required
+              </div>
+              <div *ngIf="firstname.errors.minlength">
+                Length more than  3 
+            </div>
+            
+          </div> 
+        <input type="text"  class="form-control" placeholder="first name" formControlName="firstname">
+      </div>
+      <div class="col">
+        <input type="text"  class="form-control"  placeholder="last name" formControlName="lastname">
+      </div>
+    </div>       
+    <input type="text"  class="form-control mb-4"  placeholder="username" formControlName="username">
+    <input type="date"  class="form-control mb-4" placeholder="Date of birth" formControlName="DOB">
+    
+    <input type="password"  class="form-control" placeholder="Password" aria-describedby="defaultRegisterFormPasswordHelpBlock" formControlName="password">
+    
+    <mat-select-country appearance="outline" 
+                    (onCountrySelected)="onCountrySelected($event)">
+     </mat-select-country>
+    <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="Details.invalid">Sign in</button>
+
+    <!-- <decorators> -->
+    <p>or sign up with:</p>
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="facebook"></mdb-icon>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="twitter"></mdb-icon>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="linkedin"></mdb-icon>
+    </a>
+    <a type="button" class="light-blue-text mx-2">
+      <mdb-icon fab icon="github"></mdb-icon>
+    </a>
+    <hr>
+  </form>
+
+
+
